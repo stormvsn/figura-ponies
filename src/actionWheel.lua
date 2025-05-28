@@ -6,53 +6,22 @@ toggle:newAction()
 :title("Toggle Wings")
 :item("minecraft:elytra")
 :onToggle(function ()
-    Wings = not Wings
-    config:save("Wings", Wings)
-    pings.Wings() end)
-function pings.Wings()
-    if Wings then
-        models.pony.Root.body.left_wing:setVisible(true)
-        models.pony.Root.body.right_wing:setVisible(true)
-        models.pony.Root.body.left_wing:setUVPixels(0, 0)
-        models.pony.Root.body.right_wing:setUVPixels(0, 0)
-    else
-        models.pony.Root.body.left_wing:setUVPixels(0, 14)
-        models.pony.Root.body.right_wing:setUVPixels(0, 14)
-    end
-end
+    pings.ToggleWings(not Wings) end)
 
 toggle:newAction()
 :toggled(config:load("Horn"))
 :title("Toggle Horn")
 :item("minecraft:end_rod")
 :onToggle(function () 
-    Horn = not Horn
-    config:save("Horn", Horn)
-    pings.Horn() end)
-function pings.Horn()
-    models.pony.Root.body.neck.head.horn:setVisible(Horn)
-end
+    pings.ToggleHorn(not Horn) end)
+
 
 toggle:newAction()
 :toggled(config:load("Magic"))
 :title("Toggle Magic")
 :item("minecraft:nether_star")
 :onToggle(function () 
-    Magic = not Magic
-    config:save("Magic", Magic)
-    pings.Magic() end)
-function pings.Magic()
-    models.pony.Root.right_front_leg.RIGHT_ITEM_PIVOT:setVisible(not Magic)
-    models.pony.Root.left_front_leg.LEFT_ITEM_PIVOT:setVisible(not Magic)
-    if Magic then -- Magic Aura
-        models.pony.Root.left_front_leg:offsetRot(0,0,0)
-        models.pony.Root.right_front_leg:offsetRot(0,0,0)
-    else
-        models.pony.RightArm.RightArm:setVisible(false)
-        models.pony.LeftArm.LeftArm:setVisible(false)
-        models.pony.Root.body.neck.head.horn_glow:setVisible(false)
-    end
-end
+    pings.ToggleMagic(not Magic) end)
 
 --EMOTES--
 local emotes = action_wheel:newPage()
@@ -166,7 +135,3 @@ events.TICK:register(function()
 end)
 
 action_wheel:setPage(rootPage)
-
-pings.Magic()
-pings.Wings()
-pings.Horn()

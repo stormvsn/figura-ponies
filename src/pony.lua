@@ -4,16 +4,7 @@ vanilla_model.HELMET_ITEM:setVisible(true)
 vanilla_model.PARROTS:setVisible(true)
 
 -- pony stuff
-local initValues = require("initValues")
-for k, v in pairs(initValues) do
-    if config:load(k) == nil then
-        config:save(k, v)
-    end
-end
-
-Horn = config:load("Horn")
-Magic = config:load("Magic")
-Wings = config:load("Wings")
+require("stateTracker")
 
 -- ArmorAPI
 local kattArmor = require("kattArmor")()

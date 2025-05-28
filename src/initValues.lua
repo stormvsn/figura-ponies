@@ -1,7 +1,18 @@
-local initValues = {
-	Magic = true,
-	Wings = true,
-	Horn = true,
-}
+---All three of the default values below can and should be user-modified for distribution; they control only
+---whether the avatar will have horn/wings/magic turned on on first load.
 
-return initValues
+local defaultHorn = true
+local defaultWings = true
+local defaultMagic = true
+
+function GetDefaultHorn()
+	return defaultHorn
+end
+
+function GetDefaultWings()
+	return defaultWings
+end
+
+function GetDefaultMagic()
+	return defaultMagic
+end

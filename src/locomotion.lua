@@ -47,7 +47,13 @@ events.TICK:register(function()
     local isClimb = player:isClimbing()
     local isOnGround = player:isOnGround()
     local isVisuallySwimming = player:isVisuallySwimming()
-    local isFlying = host:isFlying()
+    local isFlying = FlyingState()
+    -- on host, check if flying state has changed from last tick, pinging if necessary
+    if host:isHost() and (isFlying ~= host:isFlying()) then
+        pings.ToggleFlying(host:isFlying())
+        isFlying = FlyingState()
+    end
+    
     local isAlive = player:isAlive()
     local isInWater = player:isInWater()
     local isUnderwater = player:isUnderwater()

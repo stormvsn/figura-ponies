@@ -71,9 +71,9 @@ def pony_builder(model, size):
     with open("./config.toml", "rb") as file:
         data = tomllib.load(file)
     initvalues = initvalues\
-    .replace("Horn = true", f"Horn = {str(data[model]['Horn']).lower()}")\
-    .replace("Magic = true", f"Magic = {str(data[model]['Magic']).lower()}")\
-    .replace("Wings = true", f"Wings = {str(data[model]['Wings']).lower()}")
+    .replace("defaultHorn = true", f"defaultHorn = {str(data[model]['Horn']).lower()}")\
+    .replace("defaultMagic = true", f"defaultMagic = {str(data[model]['Magic']).lower()}")\
+    .replace("defaultWings = true", f"defaultWings = {str(data[model]['Wings']).lower()}")
     with open(f"{buildpath}/initValues.lua", "w") as file:
         file.write(initvalues)
     if args.zip is True:
