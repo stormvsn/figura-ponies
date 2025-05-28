@@ -91,3 +91,9 @@ emote = 0
 
 require("locomotion")
 require("actionWheel")
+
+--set up copy of head for use as 'portrait'
+local portraitBody = models:newPart("PortraitBody"):addChild(models.pony.Root.body.neck.head:copy("head"))
+:setParentType("Portrait")
+portraitBody:setPos(-models.pony.Root.body.neck.head:getPivot())
+portraitBody.head:removeChild(portraitBody.head.Helmet)

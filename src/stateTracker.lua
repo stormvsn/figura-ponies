@@ -30,6 +30,9 @@ local isFlying = false
 function ToggleHorn(state)
     Horn = state
     models.pony.Root.body.neck.head.horn:setVisible(state)
+    if models.PortraitBody and models.PortraitBody.head then
+        models.PortraitBody.head.horn:setVisible(state)
+    end
     if host:isHost() then
         config:save("Horn", state)
     end
@@ -68,6 +71,9 @@ function ToggleMagic(state)
         models.pony.RightArm.RightArm:setVisible(false)
         models.pony.LeftArm.LeftArm:setVisible(false)
         models.pony.Root.body.neck.head.horn_glow:setVisible(false)
+        if models.PortraitBody and models.PortraitBody.head and models.PortraitBody.head.horn_glow then
+            models.PortraitBody.head.horn_glow:setVisible(false)
+        end
     end
     if host:isHost() then
         config:save("Magic", state)
